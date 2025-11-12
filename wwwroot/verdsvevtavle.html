@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/beer.png" />
+  <title>Verdsvevtavle</title>
+</head>
+<body contenteditable="true">
+  <h1>Hallaisen</h1>
+  <p>Skriv inn ei melding her!</p>
+</body>
+<script>
+document.addEventListener(
+  "keydown",
+  function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.code === "KeyS") {
+      console.log(document.toString())
+      fetch('.', {
+        method: 'PUT',
+        body: new XMLSerializer().serializeToString(document.doctype) + document.getElementsByTagName('html')[0].outerHTML,
+      })
+      e.preventDefault(); // Prevent default browser behavior
+    }
+  },
+  false
+);
+</script>
+</html>
