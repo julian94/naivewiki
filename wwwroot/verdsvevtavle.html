@@ -15,7 +15,7 @@ document.addEventListener(
   function (e) {
     if ((e.metaKey || e.ctrlKey) && e.code === "KeyS") {
       console.log(document.toString())
-      fetch('.', {
+      fetch(document.URL, {
         method: 'PUT',
         body: new XMLSerializer().serializeToString(document.doctype) + document.getElementsByTagName('html')[0].outerHTML,
       })
